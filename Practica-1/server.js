@@ -1,14 +1,18 @@
 var http = require('http');
-
+var fs = require ('fs');
 console.log("Arrancando servidor...")
 
 
 http.createServer(function (req, res) {
-  console.log("--> Cabecera de la solicitud: ")
-    console.log("HOST: " + req.headers.host)
-  console.log("USER AGENT: " + req.headers['user-agent'])
   console.log("Recurso solicitado (URL): " + req.url)
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('Hello World!');
+
+  if(req.url = '/'){
+    console.log("init");
+    fs.readFile('index.html', (err,data) => {
+      res.writeHead(200, {'Content-type': 'text/html'})
+      res.end(data)
+    })
+  }
+
   console.log("Peticion atendida")
 }).listen(8080);
