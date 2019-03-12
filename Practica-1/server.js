@@ -19,8 +19,8 @@ http.createServer(function (req, res) {
     console.log(dir_path);
     fs.readFile(dir_path, (err, data) => {
         res.writeHead(200, { 'Content-Type': 'image/jpeg' })
-        console.log("---> Peticion recibida")
-        console.log("Recurso solicitado (URL): " + req.url)
+        console.log("Peticion recibida")
+        console.log("Recurso solicitado: " + req.url)
     res.end(data)
   })
   }
@@ -29,8 +29,8 @@ http.createServer(function (req, res) {
     console.log(dir_path);
     fs.readFile(dir_path, (err, data) => {
         res.writeHead(200, { 'Content-Type': 'image/png' })
-        console.log("---> Peticion recibida")
-        console.log("Recurso solicitado (URL): " + req.url)
+        console.log("Peticion recibida")
+        console.log("Recurso solicitado: " + req.url)
     res.end(data)
   })
   }
@@ -39,8 +39,8 @@ http.createServer(function (req, res) {
     console.log(dir_path);
     fs.readFile(dir_path, (err, data) => {
         res.writeHead(200, { 'Content-Type': 'text/html' })
-        console.log("---> Peticion recibida")
-        console.log("Recurso solicitado (URL): " + req.url)
+        console.log("Peticion recibida")
+        console.log("Recurso solicitado: " + req.url)
     res.end(data)
   })
   }
@@ -49,8 +49,8 @@ http.createServer(function (req, res) {
     console.log(dir_path);
     fs.readFile(dir_path, (err, data) => {
         res.writeHead(200, { 'Content-Type': 'text/css' })
-        console.log("---> Peticion recibida")
-        console.log("Recurso solicitado (URL): " + req.url)
+        console.log("Peticion recibida")
+        console.log("Recurso solicitado: " + req.url)
     res.end(data)
   })
   }
