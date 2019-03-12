@@ -1,0 +1,17 @@
+.product{
+  width: 200px; height: 200px;
+}
+
+.img{
+  margin-left: 50px;
+}
+
+.lista{
+
+  background-color: #cacaca;
+  width: 500px;
+  height: auto;
+}
+body{
+  text-align: center;
+}
