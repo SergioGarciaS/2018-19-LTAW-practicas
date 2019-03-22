@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url
-from mi_tienda.views import mi_funcion
+from django.conf.urls import url, include
+from mi_tienda.views import mi_funcion, mi_producto, saludo,index
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-]
-urlpatterns = [
+    url(r'^$', index),
     url(r'^hola/', mi_funcion),
     url(r'^test/', admin.site.urls),
+    url(r'^producto(\d{1,2})/$', mi_producto),
+    url(r'^saludo/', saludo)
 ]
