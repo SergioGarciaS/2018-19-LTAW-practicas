@@ -50,6 +50,24 @@ io.on('connection', function(socket){
     console.log(clients_number);
 
   });
-socket.on('new_message', msg => {io.emit('new_message', msg); })
+socket.on('new_message', msg => {
+  if (msg == '/help' || msg == ' /help'){
+    msg = '<li>Help:' + '</li><li>' + '/list: Usuarios conectados'
+              + '</li><li>' + '/hello: Mensaje del servidor' + '</li><li>'
+              + '/date: Para saber la fecha</li>';
+   socket.emit('new_message', msg);
+ }else if (msg == '/list' || msg == ' /list'){
+   msg = 'El numero de clientes es: ' + clients_number;
+   socket.emit('new_message', msg);
+ }else if (msg == '/hello' || msg == ' /hello'){
+   msg = 'QUE PASA LOCO!! SOY EL SERVIDOR';
+   socket.emit('new_message', msg);
+ }else if (msg == 'date'){
+
+ }else{
+   io.emit('new_message', msg);
+ }
+
+})
 
 });
