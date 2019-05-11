@@ -62,8 +62,11 @@ socket.on('new_message', msg => {
  }else if (msg == '/hello' || msg == ' /hello'){
    msg = 'QUE PASA LOCO!! SOY EL SERVIDOR';
    socket.emit('new_message', msg);
- }else if (msg == 'date'){
-
+ }else if (msg == '/date' || msg == ' /date'){
+   var d = new Date();
+   var month  = d.getMonth() + 1;
+   msg =  'hoy es: ' + d.getDate() + '/' +  month + '/' + d.getFullYear();
+   socket.emit('new_message', msg);
  }else{
    io.emit('new_message', msg);
  }
