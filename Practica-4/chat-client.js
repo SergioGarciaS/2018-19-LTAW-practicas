@@ -1,4 +1,6 @@
-function main(){
+
+  alert("TU VIEJA")
+  function main(){
   console.log("Hola!!!!");
   //-- Crear un socket.io. Se establece la
   //-- conexion con el Servidor
@@ -10,16 +12,18 @@ function main(){
   //-- Parrafo para mostrar mensajes recibidos
   var display = document.getElementById('display')
   //-- Caja con el mensaje a enviar
+
   var msg = document.getElementById('msg')
-
+  if(msg){
+    console.log(msg)
   // -- Enviar el mensaje pulsando la tecla ENTER
-  msg.addEventListener("keyup", function(event){
-    if (event.keyCode === 13){
-      event.preventDefault();
-      document.getElementById('send').click();
-    }
-  })
-
+    msg.addEventListener("keyup", function(event){
+      if (event.keyCode === 13){
+        event.preventDefault();
+        document.getElementById('send').click();
+      }
+    })
+  }
   send.onclick = () => {
     //-- Enviamos el mensaje
     socket.emit('new_message', msg.value);
