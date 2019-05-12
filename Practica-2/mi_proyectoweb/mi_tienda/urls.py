@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.home_view),
     url(r'^list', views.list),
-    url(r'^rubik', views.Rubik),
-    url(r'^vc', views.VC),
-    url(r'^shen', views.Shen)
+    url(r'^rub', views.rubik),
+    url(r'^v', views.vc),
+    url(r'^sh', views.shen)
 ]
