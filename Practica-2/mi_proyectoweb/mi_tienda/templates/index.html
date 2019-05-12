@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MI TIENDESITA</title>
+     <link rel="stylesheet" href="{% static 'mi-css.css'%}">
+  </head>
+  <body>
+    <img src="/static/cabeceracr.png" alt="">
+    <p>Welcome to mi shop</p>
+    <div class="mainslider">
+      {% load static %}
+      <img src="{% static 'logr.jpg'%}"  onclick="window.location.href = 'rubik'"   width="300px" height="300px">
+      <img src="{% static 'logs.jpg'%}" onclick="window.location.href = 'shen'" width="300px" height="300px">
+      <img src="{% static 'logvc.jpg'%}" onclick="window.location.href = 'vc'" width="300px" height="300px">
+
+    </div>
+
+    <p>Esto es un html (template)</p>
+  </body>
+</html>
