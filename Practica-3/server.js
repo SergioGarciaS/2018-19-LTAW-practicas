@@ -22,6 +22,16 @@ http.createServer(function (req, res) {
       res.end(data)
     })
   }
+  if(q.pathname == '/login'){
+    data = "Has sido registrado correctamente"
+    res.setHeader('Set-Cookie', 'user=obijuan')
+
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end(data)
+    console.log("Guardado_cookie")
+  }
+
+
   if(req.url.split(".")[1] == 'jpg' || req.url.split(".")[1] == 'jpeg' ){
     let dir_path = path.join(__dirname, req.url)
     console.log(dir_path);
