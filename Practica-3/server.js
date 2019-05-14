@@ -10,7 +10,8 @@ http.createServer(function (req, res) {
 
   //-- Leer las cookies
   var cookie = req.headers.cookie;
-  console.log("Cookie: " + cookie)
+  lol = cookie.split(";", )
+  console.log("Cookie: " + lol[1].split("=", )[0])
 
 
   console.log("Recurso solicitado (URL): " + req.url)
@@ -30,7 +31,73 @@ http.createServer(function (req, res) {
     res.end(data)
     console.log("Guardado_cookie")
   }
+  if(q.pathname == '/form')
+  {
+    var d = decodeURIComponent(q.cookie);
+    console.log(d)
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end(d)
+    // data = "tu eres un crack"
+  }
+  // Guardado de cookies de RUBIK
 
+  if (q.pathname == '/r1')
+  {
+    res.setHeader('Set-Cookie', '"./img/r3.jpg" = "RUBIK 3x3"')
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end()
+  }
+  if (q.pathname == '/r2')
+  {
+    res.setHeader('Set-Cookie', '"./img/r4.jpg" = "RUBIK 4x4"')
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end()
+  }
+  if (q.pathname == '/r3')
+  {
+    res.setHeader('Set-Cookie', '"./img/r5.jpg" = "RUBIK 5x5"')
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end()
+  }
+  // Guardado de cookies de Shengshou
+  if (q.pathname == '/s1')
+  {
+    res.setHeader('Set-Cookie', '"./img/s3.jpg" = "SHENSHOU 3x3"')
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end()
+  }
+  if (q.pathname == '/s2')
+  {
+    res.setHeader('Set-Cookie', '"./img/s4.jpg" = "SHENSHOU 4x4"')
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end()
+  }
+  if (q.pathname == '/s3')
+  {
+    res.setHeader('Set-Cookie', '"./img/s5.jpg" = "SHENSHOU 5x5"')
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end()
+  }
+
+  // Guardado de cookies de VC
+  if (q.pathname == '/v1')
+  {
+    res.setHeader('Set-Cookie', '"./img/vc3.jpg" = "V-CUBE 3x3"')
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end()
+  }
+  if (q.pathname == '/v2')
+  {
+    res.setHeader('Set-Cookie', '"./img/vc4.jpg" = "V-CUBE 4x4"')
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end()
+  }
+  if (q.pathname == '/v3')
+  {
+    res.setHeader('Set-Cookie', '"./img/vc5.jpg" = "V-CUBE 5x5"')
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end()
+  }
 
   if(req.url.split(".")[1] == 'jpg' || req.url.split(".")[1] == 'jpeg' ){
     let dir_path = path.join(__dirname, req.url)
