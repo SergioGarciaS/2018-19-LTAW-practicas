@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
+  <body onload = "relleno();">
     <a href="./index.html"><img class="cabecera" src="./img/cabeceracr.png" alt=""></a>
     <a href="./login"><img class = "button" src ="./img/log.jpg" alt=""></a>
+    <a href="./cesta"><img class = "button" src ="./img/cesta.jpg" alt=""></a>
     <form class="" action="/form" method="post">
       Nombre:
       <input type="text" name="Nombre"/> <br />
@@ -19,5 +20,13 @@
       <ul><a href="./vcub.html"><img class="product" src="./img/logvc.jpg" alt=""></a></ul>
       <ul><a href="./seng.html"><img class="product" src="./img/logs.jpg" alt=""></a></ul>
     </li>
+    <script type="text/javascript">
+    function relleno(){
+      // var cookie = document.cookies;
+      var decodedCookie = decodeURIComponent(document.cookie);
+      console.log(decodedCookie);
+    }
+    </script>
+
   </body>
 </html>

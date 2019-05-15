@@ -8,11 +8,14 @@ http.createServer(function (req, res) {
   var q = url.parse(req.url, true);
   console.log("Petición: " + q.pathname)
 
-  //-- Leer las cookies
-  var cookie = req.headers.cookie;
-  lol = cookie.split(";", )
-  console.log("Cookie: " + lol[1].split("=", )[0])
+  //-- Leer las cookies TENER EN CUENTA EL ORDEN DE LAS COOKIES PARA IMPRIMIR LA TIENDA, TIENE QUE ESTAR PRIMERO LOGUEADO
 
+  var cookie = req.headers.cookie;
+  if (cookie){
+  console.log("TODAS LAS COOKIES: " + cookie)
+  lol = cookie.split(";", )
+  console.log("Cookie: " + lol[0].split("=", )[0])
+}
 
   console.log("Recurso solicitado (URL): " + req.url)
 
@@ -38,6 +41,54 @@ http.createServer(function (req, res) {
     res.writeHead(200, {'Content-type': 'text/html'})
     res.end(d)
     // data = "tu eres un crack"
+  }
+  if(q.pathname == '/cesta')
+  {
+    fs.readFile('cesta.html', (err,data) => {
+      res.writeHead(200, {'Content-type': 'text/html'})
+      res.end(data)
+    })
+  }
+
+  if(req.url.split(".")[1] == 'jpg' || req.url.split(".")[1] == 'jpeg' ){
+    let dir_path = path.join(__dirname, req.url)
+    console.log(dir_path);
+    fs.readFile(dir_path, (err, data) => {
+        res.writeHead(200, { 'Content-Type': 'image/jpeg' })
+        console.log("Peticion recibida")
+        console.log("Recurso solicitado: " + req.url)
+    res.end(data)
+  })
+  }
+  if(req.url.split(".")[1] == 'png'){
+    let dir_path = path.join(__dirname, req.url)
+    console.log(dir_path);
+    fs.readFile(dir_path, (err, data) => {
+        res.writeHead(200, { 'Content-Type': 'image/png' })
+        console.log("Peticion recibida")
+        console.log("Recurso solicitado: " + req.url)
+    res.end(data)
+  })
+  }
+  if(req.url.split(".")[1] == 'html'){
+    let dir_path = path.join(__dirname, req.url)
+    console.log(dir_path);
+    fs.readFile(dir_path, (err, data) => {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        console.log("Peticion recibida")
+        console.log("Recurso solicitado: " + req.url)
+    res.end(data)
+  })
+  }
+  if(req.url.split(".")[1] == 'css'){
+    let dir_path = path.join(__dirname, req.url)
+    console.log(dir_path);
+    fs.readFile(dir_path, (err, data) => {
+        res.writeHead(200, { 'Content-Type': 'text/css' })
+        console.log("Peticion recibida")
+        console.log("Recurso solicitado: " + req.url)
+    res.end(data)
+  })
   }
   // Guardado de cookies de RUBIK
 
@@ -99,44 +150,5 @@ http.createServer(function (req, res) {
     res.end()
   }
 
-  if(req.url.split(".")[1] == 'jpg' || req.url.split(".")[1] == 'jpeg' ){
-    let dir_path = path.join(__dirname, req.url)
-    console.log(dir_path);
-    fs.readFile(dir_path, (err, data) => {
-        res.writeHead(200, { 'Content-Type': 'image/jpeg' })
-        console.log("Peticion recibida")
-        console.log("Recurso solicitado: " + req.url)
-    res.end(data)
-  })
-  }
-  if(req.url.split(".")[1] == 'png'){
-    let dir_path = path.join(__dirname, req.url)
-    console.log(dir_path);
-    fs.readFile(dir_path, (err, data) => {
-        res.writeHead(200, { 'Content-Type': 'image/png' })
-        console.log("Peticion recibida")
-        console.log("Recurso solicitado: " + req.url)
-    res.end(data)
-  })
-  }
-  if(req.url.split(".")[1] == 'html'){
-    let dir_path = path.join(__dirname, req.url)
-    console.log(dir_path);
-    fs.readFile(dir_path, (err, data) => {
-        res.writeHead(200, { 'Content-Type': 'text/html' })
-        console.log("Peticion recibida")
-        console.log("Recurso solicitado: " + req.url)
-    res.end(data)
-  })
-  }
-  if(req.url.split(".")[1] == 'css'){
-    let dir_path = path.join(__dirname, req.url)
-    console.log(dir_path);
-    fs.readFile(dir_path, (err, data) => {
-        res.writeHead(200, { 'Content-Type': 'text/css' })
-        console.log("Peticion recibida")
-        console.log("Recurso solicitado: " + req.url)
-    res.end(data)
-  })
-  }
+
 }).listen(8080);

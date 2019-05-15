@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mi cesta</title>
+
+  </head>
+  <body onload="relleno();">
+    <script type="text/javascript">
+      function relleno(){
+        // var cookie = document.cookies;
+        var decodedCookie = decodeURIComponent(document.cookie);
+        cookie = decodedCookie.split(";",);
+        console.log(cookie);
+        for (x=0;x<cookie.length;x++){
+          if (cookie[x].split("=",)[0] != "/user"){
+            console.log(cookie[x])
+            var art = document.createElement("img");
+            art.src = cookie[x].split("=",)[0].slice(2,-1);
+            art.id = "publi";
+            art.width = 300;
+            art.height = 300;
+            document.getElementById("elementos").appendChild(art);
+          }
+        }
+      }
+    </script>
+    <h1>Elementos comprados en la cesta</h1>
+    <div id ="elementos">
+
+    </div>
+
+
+
+  </body>
+</html>
