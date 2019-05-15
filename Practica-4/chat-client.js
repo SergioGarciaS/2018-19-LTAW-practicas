@@ -1,6 +1,6 @@
 
   function main(){
-  console.log("ENTRA EN LA FUNCIÓN MAIN");
+  console.log("ENTRA EN LA FUNCIÓN MAIN lolo);
   //-- Crear un socket.io. Se establece la
   //-- conexion con el Servidor
   var socket = io();
