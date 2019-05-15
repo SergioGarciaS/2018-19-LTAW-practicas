@@ -13,8 +13,8 @@
         cookie = decodedCookie.split(";",);
         console.log(cookie);
         for (x=0;x<cookie.length;x++){
-          if (cookie[x].split("=",)[0] != "/user"){
-            console.log(cookie[x])
+          if (cookie[x].split("=",)[0] != ' user' || cookie[x].split("=",)[0] != 'user'){
+            console.log("user loco" + cookie[x].split("=",)[0])
             var art = document.createElement("img");
             art.src = cookie[x].split("=",)[0].slice(2,-1);
             art.id = "publi";
