@@ -36,11 +36,49 @@ http.createServer(function (req, res) {
   }
   if(q.pathname == '/form')
   {
-    var d = decodeURIComponent(q.cookie);
-    console.log(d)
-    res.writeHead(200, {'Content-type': 'text/html'})
-    res.end(d)
-    // data = "tu eres un crack"
+    console.log("entra aqui")
+          if (req.method === 'POST') {
+            // Handle post info...
+            console.log("entra aqui2")
+            var content = `
+            <!DOCTYPE html>
+            <html lang="es">
+              <head>
+                <meta charset="utf-8">
+                <title>FORM 1</title>
+              </head>
+              <body>
+                <p>Recibido: `
+
+            req.on('data', chunk => {
+                //-- Leer los datos (convertir el buffer a cadena)
+                data = chunk.toString();
+                campos = data.split("&",)
+                console.log(data.split("&",))
+                //-- Añadir los datos a la respuesta
+                content += '<p> Nombre:' + campos[0].split("=",)[1] + '</p><p> Apellido: ' + campos[1].split("=")[1] +  '</p><p> email: ' + campos[2].split("=",)[1].replace("%40", "@") + '</p>';
+
+                if (campos[3].split("=",)[1] == '1'){
+                  content += '<p> Método de pago:  Paypal </p>';
+                }else if (campos[3].split("=",)[1] == '2'){
+                  content += '<p> Método de pago:  Tarjeta </p>';
+                }else if(campos[3].split("=",)[1] == '3'){
+                  content += '<p> Método de pago:  TTransferencia </p>'; 
+                }
+                //-- Fin del mensaje. Enlace al formulario
+                content += `
+                    </p>
+                    <a href="/">VOLVER A INICIO</a>
+                  </body>
+                </html>
+                `
+                //-- Mostrar los datos en la consola del servidor
+                console.log("Datos recibidos: " + data)
+                res.statusCode = 200;
+                res.end(content)
+             });
+          }
+
   }
   if(q.pathname == '/cesta')
   {
