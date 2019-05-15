@@ -3,7 +3,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 //-- Puerto donde lanzar el servidor
-const PORT = 3000
+const PORT = 3001
 
 var clients_number = 0;
 
