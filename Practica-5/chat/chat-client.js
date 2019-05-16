@@ -4,7 +4,7 @@
   console.log("Hola!!!!");
   //-- Crear un socket.io. Se establece la
   //-- conexion con el Servidor
-  var socket = io();
+  var socket = io.connect("http://localhost:3001");
 
   //-- Obtenemos los elementos de interfaz:
   //-- Boton de envio
